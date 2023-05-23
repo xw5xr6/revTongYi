@@ -41,6 +41,12 @@ class Session:
     """上一次请求获取的msgId"""
 
     def __init__(self, cookies: dict, firstQuery: str):
+        """初始化
+        
+        Args:
+            cookies (dict): Cookies字典
+            firstQuery (str): 首次提问内容
+        """
         self.cookies = cookies
 
         self.cookies_str = ""
@@ -88,8 +94,21 @@ class Session:
         else:
             raise Exception("创建会话失败: {}".format(resp_json))
 
-    def ask(self, prompt: str, open_search: bool = False, timeout: int = 17, stream: bool = False) -> dict:
-        """提问"""
+    def ask(
+        self,
+        prompt: str,
+        open_search: bool = False,
+        timeout: int = 17,
+        stream: bool = False
+    ) -> dict:
+        """提问
+        
+        Args:
+            prompt (str): 提问内容
+            open_search (bool, optional): 是否开启搜索. Defaults to False.
+            timeout (int, optional): 超时时间. Defaults to 17.
+            stream (bool, optional): 是否流式. Defaults to False.
+        """
         resp = requests.post(
             url="https://tongyi.aliyun.com/qianwen/conversation",
             cookies=self.cookies,
