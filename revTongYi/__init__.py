@@ -170,3 +170,42 @@ class Session:
                         print("解析失败: {}".format(e))
                         # print("pending: {}".format(pending))
                         continue
+
+
+def cli():
+    cookies_file_content = []
+    with open("cookies.json", encoding="utf-8") as f:
+        cookies_file_content = json.load(f)
+
+    cookies_dict = {}
+    for it in cookies_file_content:
+        cookies_dict[it['name']] = it['value']
+
+    question = input("You > ")
+
+    session = Session(
+        cookies=cookies_dict,
+        firstQuery=question
+    )
+
+    while True:
+
+        reply_iter = session.ask(
+            prompt=question,
+            stream=True
+        )
+
+        last_out = ""
+
+        print("AI  > ", end="")
+
+        for resp in reply_iter:
+            resp_text = resp['content'][-1]
+            print(resp_text.replace(last_out, ""), end="")
+            last_out = resp_text
+        
+        question = input("\nYou > ")
+
+
+if __name__ == "__main__":
+    cli()

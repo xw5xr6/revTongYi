@@ -32,3 +32,13 @@ print(
     )
 )
 ```
+
+## CLI模式
+
+1. 安装 [Chrome/Edge](https://chrome.google.com/webstore/detail/cookie-editor/hlkenndednhfkekhgcdicdfddnkalmdm) 或 [Firefox](https://addons.mozilla.org/en-US/firefox/addon/cookie-editor/) 上的Cookies Editor插件
+2. 前往https://tongyi.aliyun.com/chat并登录
+3. 打开此插件，点击`Export`->`Export as JSON`，将复制的Cookies内容保存到文件`cookies.json`
+
+```bash
+python -m revTongYi
+```
