@@ -87,7 +87,6 @@ class Session:
         )
         
         resp_json = resp.json()
-        print(resp_json)
         if resp_json['success']:
             self.userId = resp_json['data']['userId']
             self.sessionId = resp_json['data']['sessionId']
