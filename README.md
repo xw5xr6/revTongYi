@@ -40,5 +40,5 @@ print(
 3. 打开此插件，点击`Export`->`Export as JSON`，将复制的Cookies内容保存到文件`cookies.json`
 
 ```bash
-python -m revTongYi
+python -m revTongYi.__init__
 ```
