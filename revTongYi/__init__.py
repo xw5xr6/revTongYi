@@ -68,7 +68,7 @@ class Session:
             "sec-fetch-mode": "cors",
             "sec-fetch-site": "same-origin",
             "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36 Edg/113.0.1774.50",
-            "x-xsrf-token": "50f6b58b-4251-42e9-906d-97dc5d1eee61",
+            "x-xsrf-token": self.cookies['XSRF-TOKEN'],
             "cookie": self.cookies_str
         }
 
@@ -87,6 +87,7 @@ class Session:
         )
         
         resp_json = resp.json()
+        print(resp_json)
         if resp_json['success']:
             self.userId = resp_json['data']['userId']
             self.sessionId = resp_json['data']['sessionId']
